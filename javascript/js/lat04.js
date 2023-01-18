@@ -7,17 +7,11 @@
 // dengan bilangan bulat negatif dibulatkan mendekati atau menjauh dari nol, 
 // bergantung pada modenya.
 
-// True = benar
-// false = salah
+let tampil = document.querySelector("#belajar");
 
-
-
-zodiac(5, 20);
-lulus(90);
-console.log(terbilang(1234567));
-console.log(prima(4));
-
-function zodiac(bln, tgl) {
+function zodiak() {
+    let bln = document.getElementsByName("bln")[0].value;
+    let tgl = document.getElementsByName("tgl")[0].value;
     let hasil = "salah";
     if (bln > 0 && bln < 13 && tgl > 0 && tgl < 32) {
         hasil - "zodiak belum dibuat";
@@ -94,77 +88,75 @@ function zodiac(bln, tgl) {
             }
         }
     }
-    console.log(hasil);
+    tampil.innerHTML=hasil;
 }
 
 
-function lulus(nilai) {
-    if (nilai >=0 && nilai <=100) {
+
+function lulus() {
+    let nilai = document.getElementById("nilai").value;
+    if (nilai >= 0 && nilai <= 100) {
         if (nilai >= 80) {
-            console.log("lulus");
-        }else{
-            console.log("Tidak Lulus");
+            tampil.innerHTML = "lulus";
+        } else {
+            tampil.innerHTML = "tidak lulus";
         }
-    }else{
-        console.log("Invalid Sayang");
+    }else {
+        tampil.innerHTML = "Invalid sayang";
     }
 }
 
-function terbilang(angka) {
-    var Terbilang=["","satu","dua","tiga","empat","lima","enam","tujuh","delapan","sembilan","sepuluh","sebelas"];
-
-    if(angka < 12){
-
-        return Terbilang[angka];
-
-    }else if(angka < 20){
-
-        return terbilang(angka-10)+" belas";
-
-    }else if(angka < 100){
-
-        return terbilang(Math.floor(parseInt(angka)/10))+" puluh "+terbilang(parseInt(angka)%10);
-
-    }else if(angka < 200){
-
-        return "seratus "+terbilang(parseInt(angka)-100);
-
-    }else if(angka < 1000){
-
-        return terbilang(Math.floor(parseInt(angka)/100))+" ratus "+terbilang(parseInt(angka)%100);
-
-    }else if(angka < 2000){
-
-        return "seribu "+terbilang(parseInt(angka)-1000);
-
-    }else if(angka < 1000000){
-
-        return terbilang(Math.floor(parseInt(angka)/1000))+" ribu "+terbilang(parseInt(angka)%1000);
-
-    }else if(angka < 1000000000){
-
-        return terbilang(Math.floor(parseInt(angka)/1000000))+" juta "+terbilang(parseInt(angka)%1000000);
-
-    }else if(angka < 1000000000000){
-
-        return terbilang(Math.floor(parseInt(angka)/1000000000))+" milyar "+terbilang(parseInt(angka)%1000000000);
-
-    }else if(angka < 1000000000000000){
-
-        return terbilang(Math.floor(parseInt(angka)/1000000000000))+" trilyun "+terbilang(parseInt(angka)%1000000000000);
-
+function bilangan() {
+    let angka = document.getElementById("angka").value;
+    function terbilang(angka) {
+    
+        var bilne=["","satu","dua","tiga","empat","lima","enam","tujuh","delapan","sembilan","sepuluh","sebelas"];
+        if(angka < 12){
+            return bilne[angka];
+        }else if(angka < 20){
+            return terbilang(angka-10)+" belas";
+        }else if(angka < 100){
+            return terbilang(Math.floor(angka/10))+" puluh "+terbilang(angka%10);
+        }else if(angka < 200){
+            return "seratus "+terbilang(angka-100);
+        }else if(angka < 1000){
+            return terbilang(Math.floor(angka/100))+" ratus "+terbilang(angka%100);
+        }else if(angka < 2000){
+            return "seribu "+terbilang(angka-1000);
+        }else if(angka < 1000000){
+            return terbilang(Math.floor(angka/1000))+" ribu "+terbilang(angka%1000);
+        }else if(angka < 1000000000){
+            return terbilang(Math.floor(angka/1000000))+" juta "+terbilang(angka%1000000);
+        }else if(angka < 1000000000000){
+            return terbilang(Math.floor(angka/1000000000))+" milyar "+terbilang(angka%1000000000);
+        }else if(angka < 1000000000000000){
+            return terbilang(Math.floor(angka/1000000000000))+" trilyun "+terbilang(angka%1000000000000);
+        }    
     }
+    tampil.innerHTML = terbilang(angka);
+}
 
+function prima() {
+    let angka = document.getElementById("number").value;
+    let pembagi = 0;
+    for (let i = 0; i <= angka; i++) {
+        if (angka % i == 0) {
+            pembagi++;
+        }
+    }
+    if (pembagi == 2) {
+        tampil.innerHTML = "Prima";
+    } else {
+        tampil.innerHTML = "Bukan Prima";
+    }
+}
+
+klik.onclick = function () {
+    hasil(70);
+}
+
+function hasil(a) {
+    tampil.innerHTML = a;
 }
 
 
-function prima(bilangan) {
-    var bagi= 0;
-    for(var i = 2; i<= Math.floor(bilangan/2); i++) {
-    bagi++
-    if (bilangan % i === 0) {
-        return false
-    } 
-    }
-    return true
-    }
