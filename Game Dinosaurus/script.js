@@ -28,8 +28,8 @@ setInterval(() => {
   }
 
   if (rockLeft < 50 && rockLeft > 0 && dinoTop > 150) {
-    alert("You got a score of: " + score.innerText +
-      "\n\nPlay again?");
+    alert("Kamu Mendapatkan Score: " + score.innerText +
+      "\n\nMaen Lagi?");
     location.reload();
   }
 }, 50);
